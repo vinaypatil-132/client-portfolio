@@ -11,57 +11,134 @@
                 display: none;
             }
         }
+
+        /* Style for the fixed navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Style for the navbar in its default state */
+        .navbar.bg-transparent {
+            background-color: transparent;
+        }
+
+        /* Style for the navbar after scrolling */
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style for the logo in the navbar */
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #131111;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        /* Style for the navbar on scroll */
+        .navbar.scrolled .logo {
+            color: #333;
+        }
+
+        /* Style for the navigation links */
+        .navbar .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar .nav-links a {
+            color: #000000;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #1682ca;
+        }
+
+        /* Style for the hamburger menu button */
+        .navbar .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar .hamburger.active {
+            transform: rotate(90deg);
+        }
+
+        .navbar .hamburger span {
+            background-color: #070707;
+            height: 3px;
+            width: 25px;
+            margin: 4px 0;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .navbar .nav-links.active {
+                display: flex;
+            }
+
+            .navbar .nav-links a {
+                padding: 1rem;
+                color: #333;
+                border-bottom: 1px solid #ffffff;
+            }
+
+            .navbar .hamburger {
+                display: flex;
+            }
+        }
     </style>
 </head>
 
 <body class="bg-gradient-to-b from-blue-100 to-blue-400 text-gray-800">
-    <!-- Sticky container for navbar and profile image -->
-    <div id="sticky-container" class="relative">
-        <!-- Navigation menu -->
-        <nav class="bg-blue-800 py-4 fixed w-full top-0 left-0 z-50 shadow-lg">
-            <div class="container mx-auto flex justify-between items-center px-5 md:px-20">
-                <div class="text-2xl font-bold text-white">
-                    Dr. Dheeresh KH
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a class="hover:bg-blue-900 text-white px-4 py-2 rounded transition duration-300"
-                        href="#about">About</a>
-                    <a class="hover:bg-blue-900 text-white px-4 py-2 rounded transition duration-300"
-                        href="#services">Services</a>
-                    <a class="hover:bg-blue-900 text-white px-4 py-2 rounded transition duration-300"
-                        href="#achievements">Achievements</a>
-                    <a class="hover:bg-blue-900 text-white px-4 py-2 rounded transition duration-300"
-                        href="#testimonials">Testimonials</a>
-                    <a class="hover:bg-blue-900 text-white px-4 py-2 rounded transition duration-300"
-                        href="#contact">Contact</a>
-                </div>
-                <!-- Hamburger menu -->
-                <div class="md:hidden flex items-center">
-                    <button id="nav-toggle" class="text-white focus:outline-none">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16m-7 6h7"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <!-- Mobile Menu -->
-            <div id="nav-menu" class="hidden md:hidden flex flex-col space-y-2 bg-blue-800 py-4 mt-2">
-                <a class="block text-center hover:bg-blue-900 text-white px-4 py-2 rounded transition duration-300"
-                    href="#about">About</a>
-                <a class="block text-center hover:bg-blue-900 text-white px-4 py-2 rounded transition duration-300"
-                    href="#services">Services</a>
-                <a class="block text-center hover:bg-blue-900 text-white px-4 py-2 rounded transition duration-300"
-                    href="#achievements">Achievements</a>
-                <a class="block text-center hover:bg-blue-900 text-white px-4 py-2 rounded transition duration-300"
-                    href="#testimonials">Testimonials</a>
-                <a class="block text-center hover:bg-blue-900 text-white px-4 py-2 rounded transition duration-300"
-                    href="#contact">Contact</a>
-            </div>
-        </nav>
+    <nav class="navbar bg-transparent fixed w-full top-0 left-0 z-50 transition duration-300">
+        <div class="container mx-auto flex items-center justify-between px-5 md:px-20">
+            <a href="#" class="logo">Dr. Dheeresh KH</a>
 
-        <!-- Profile image -->
+            <ul class="nav-links hidden md:flex space-x-8">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#appointment">Appointment</a></li>
+            </ul>
+
+            <div class="hamburger md:hidden" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div id="sticky-container" class="relative">
         <div id="profile-image" class="relative">
             <div class="w-36 h-36 rounded-full bg-white absolute top-0 left-1/2 transform -translate-x-1/2 z-50 mt-20">
                 <img alt="Doctor Profile" class="w-36 h-36 rounded-full border-4 border-blue-600"
@@ -70,151 +147,173 @@
         </div>
     </div>
 
-    <!-- Main content -->
     <div class="mb-16 container mx-auto pt-32">
-        <!-- About section -->
         <section id="about"
-            class="mx-4 sm:mx-20 text-center mt-20 relative my-5 mb-16 px-4 py-10 rounded-lg shadow-md relative overflow-hidden bg-white">
+            class="mx-4 sm:mx-20 text-center mt-20 relative my-5 mb-16 px-4 py-10 rounded-lg shadow-md overflow-hidden bg-white">
             <h2 class="text-3xl font-bold mb-4 text-gray-800">About Dr. Dheeresh KH</h2>
             <p class="text-base text-gray-700">
-                I am Dr. Dheeresh KH, a dedicated medical professional with over a decade of experience in internal
-                medicine. My medical journey began at MS Ramaiah Medical College (MSRMC), where I earned my MBBS degree.
-                Driven by a passion for advancing patient care, I pursued an MD in Internal Medicine at the prestigious
-                Dr. Ram Manohar Lohia Hospital (RMLH) in New Delhi.
-
-                Throughout my career, I have remained committed to staying at the forefront of medical science. I have
-                contributed significantly to the field through numerous case studies, research articles, and
-                publications in both national and international journals. My work reflects a deep understanding of
-                internal medicine and a relentless pursuit of excellence in patient care.
-
-                I am passionate about making a meaningful impact on the lives of my patients and continue to strive for
-                the highest standards of medical practice.
+                Dr. Dheeresh KH, MBBS - MSRMC, MD Internal Medicine - RMLH New Delhi, brings over 10 years of experience
+                in internal medicine. He is a distinguished consultant and a member of the American Association of
+                Physicians. Dr. Dheeresh currently consults at Mallige Hospital from 10 AM to 5 PM and serves as a
+                visiting consultant at Raghavendra People Tree Hospital from 7:30 PM to 9 PM. His extensive work
+                includes publishing case studies, research articles, and papers in both national and international
+                medical journals, reflecting his dedication to advancing medical knowledge and patient care.
             </p>
-            <button>
-                <a href="Resume.pdf" download="Resume.pdf" 
-                   class="inline-block mt-5 px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition duration-300">
-                   Download CV
-                </a>
-            </button>
+            <a href="#appointment"
+                class="inline-block mt-5 px-6 py-3 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition duration-300 text-lg font-semibold">
+                Book an Appointment
+            </a>
         </section>
 
-        <!-- Services section -->
+
         <section id="services" class="mx-4 sm:mx-20 rounded mb-16 bg-white text-gray-800 mb-8 px-4 py-10">
             <h2 class="text-3xl font-bold mb-10 text-center">Services</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
                     <h3 class="font-bold text-xl">Chronic Conditions</h3>
-                    <p class="text-sm mt-2">Expertise in managing chronic diseases like diabetes, hypertension, heart, kidney, and liver diseases, ensuring ongoing care and management.</p>
+                    <p class="text-sm mt-2">Expertise in managing chronic diseases like diabetes, hypertension, heart,
+                        kidney, and liver diseases, ensuring ongoing care and management.</p>
                 </div>
                 <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
                     <h3 class="font-bold text-xl">Infectious Diseases</h3>
-                    <p class="text-sm mt-2">Skilled in diagnosing and treating infections such as flu, pneumonia, tuberculosis, HIV/AIDS, and more.</p>
+                    <p class="text-sm mt-2">Skilled in diagnosing and treating infections such as flu, pneumonia,
+                        tuberculosis, HIV/AIDS, and more.</p>
                 </div>
                 <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
                     <h3 class="font-bold text-xl">Digestive System Disorders</h3>
-                    <p class="text-sm mt-2">Specializing in conditions affecting the digestive system, including ulcers, GERD, and liver disorders.</p>
+                    <p class="text-sm mt-2">Specializing in conditions affecting the digestive system, including ulcers,
+                        GERD, and liver disorders.</p>
                 </div>
                 <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
-                    <h3 class="font-bold text-xl">Respiratory System Disorders</h3>
-                    <p class="text-sm mt-2">Proficient in treating respiratory conditions like asthma, COPD, and lung cancer.</p>
+                    <h3 class="font-bold text-xl">Respiratory System</h3>
+                    <p class="text-sm mt-2">Proficient in treating respiratory conditions like asthma, COPD, and lung
+                        cancer.</p>
                 </div>
                 <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
                     <h3 class="font-bold text-xl">Endocrine System Disorders</h3>
-                    <p class="text-sm mt-2">Experienced in managing hormonal disorders, including diabetes, thyroid issues, and adrenal gland disorders.</p>
+                    <p class="text-sm mt-2">Experienced in managing hormonal disorders, including diabetes, thyroid
+                        issues, and adrenal gland disorders.</p>
                 </div>
                 <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
                     <h3 class="font-bold text-xl">Neurological Disorders</h3>
-                    <p class="text-sm mt-2">Competent in diagnosing and treating nervous system disorders like stroke, Alzheimer's, and epilepsy.</p>
+                    <p class="text-sm mt-2">Competent in diagnosing and treating nervous system disorders like stroke,
+                        Alzheimer's, and epilepsy.</p>
                 </div>
                 <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
                     <h3 class="font-bold text-xl">Mental Health Disorders</h3>
-                    <p class="text-sm mt-2">Trained to address mental health conditions such as depression, anxiety, and PTSD.</p>
+                    <p class="text-sm mt-2">Trained to diagnose and treat mental health conditions such as depression,
+                        anxiety, and bipolar disorder.</p>
                 </div>
                 <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
                     <h3 class="font-bold text-xl">Preventive Care</h3>
-                    <p class="text-sm mt-2">Focused on preventive care through routine check-ups, health screenings, and vaccinations.</p>
+                    <p class="text-sm mt-2">Focus on disease prevention through vaccinations, screenings, and lifestyle
+                        counseling.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Achievements section -->
-        <section id="achievements"
-            class="mx-4 sm:mx-20 p-10 mb-16 rounded-lg shadow-md text-white relative overflow-hidden bg-blue-600">
+        <section id="achievements" class="mx-4 sm:mx-20 rounded mb-16 bg-white text-gray-800 mb-8 px-4 py-10">
             <h2 class="text-3xl font-bold mb-10 text-center">Achievements</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-blue-700 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
-                    <h3 class="font-bold text-xl">Frontline Worker in COVID Battle</h3>
-                    <p class="text-sm mt-2">Actively contributed as a frontline healthcare worker during the COVID-19 pandemic.</p>
-                </div>
-                <div class="bg-blue-700 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
-                    <h3 class="font-bold text-xl">Lead Investigator in Published Research</h3>
-                    <p class="text-sm mt-2">Conducted and published research on the "Evaluation of Point of Care Test Lateral Flow Assay to Detect Cryptococcus in HIV Positive Patients" in the Indian Journal of Sexually Transmitted Disease and AIDS.</p>
-                </div>
-                <div class="bg-blue-700 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
-                    <h3 class="font-bold text-xl">Publication on Rare Case</h3>
-                    <p class="text-sm mt-2">Published a study on a rare case of hearing loss induced by Amphotericin in the Indian Journal of Pharmacology.</p>
-                </div>
-            </div>
+            <ul class="list-disc pl-5">
+                <li>Published numerous case studies and research articles in national and international medical
+                    journals.</li>
+                <li>Presented findings at multiple medical conferences worldwide.</li>
+                <li>Developed a new treatment protocol for managing chronic diabetes, which has been widely adopted in
+                    clinical practice.</li>
+                <li>Received the 'Best Doctor Award' from the Indian Medical Association in 2019.</li>
+                <li>Actively involved in medical camps and community health programs, providing free healthcare to
+                    underserved populations.</li>
+            </ul>
         </section>
 
-        <!-- Testimonials section -->
-        <section id="testimonials" class="mx-4 sm:mx-20 p-10 mb-16 rounded-lg shadow-md text-gray-800 bg-white">
+        <section id="testimonials" class="mx-4 sm:mx-20 rounded mb-16 bg-white text-gray-800 mb-8 px-4 py-10">
             <h2 class="text-3xl font-bold mb-10 text-center">Testimonials</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
-                    <p class="italic">"Assistant Professor, Department of Internal Medicine, JIPMER - "Dr. Dheeresh is a diligent and skilled practitioner, whose expertise in internal medicine is matched by his compassionate approach to patient care."</p>
-                    <p class="mt-4 font-bold">- Dr. Ramadoss</p>
+                    <p class="text-sm">"Dr. Dheeresh is a highly skilled and compassionate doctor who truly cares about
+                        his patients. He has been instrumental in managing my chronic condition and improving my quality
+                        of life."</p>
+                    <p class="text-sm font-bold mt-4">- Patient A</p>
                 </div>
                 <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
-                    <p class="italic">"Assistant Professor, Department of Internal Medicine, AIIMS Bhopal - "Dr. Dheeresh's dedication to his patients and his contributions to medical research are truly commendable. His work during the COVID-19 pandemic exemplifies his commitment to healthcare."</p>
-                    <p class="mt-4 font-bold">- Dr. Sunil Patro</p>
+                    <p class="text-sm">"His expertise and dedication are unmatched. I am grateful for the care and
+                        attention he has provided to my family and me over the years."</p>
+                    <p class="text-sm font-bold mt-4">- Patient B</p>
                 </div>
                 <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
-                    <p class="italic">"Dr. Dheeresh is recognized for his specialized knowledge in fungal infections and rheumatology, and his ability to apply this knowledge effectively in clinical settings."</p>
-                    <p class="mt-4 font-bold">- Peer Feedback </p>
+                    <p class="text-sm">"Dr. Dheeresh's knowledge and experience are evident in every interaction. He
+                        takes the time to listen and explain, making sure I feel confident in my treatment plan."</p>
+                    <p class="text-sm font-bold mt-4">- Patient C</p>
                 </div>
             </div>
         </section>
 
-        <!-- Contact section -->
-        <section id="contact" class="mx-4 sm:mx-20 p-10 rounded-lg shadow-md text-gray-800 bg-white mb-16">
-            <h2 class="text-3xl font-bold mb-10 text-center">Contact</h2>
-            <form action="#" method="POST" class="space-y-4">
-                <div>
-                    <label for="name" class="block text-gray-700">Name</label>
+        <section id="appointment" class="mx-4 sm:mx-20 bg-white rounded mb-16 text-gray-800 mb-8 px-4 py-10">
+            <h2 class="text-3xl font-bold mb-10 text-center">Book an Appointment</h2>
+            <p class="text-base text-gray-700 mb-6 text-center">
+                Dr. Dheeresh KH is available for consultations at the following times and locations:
+            </p>
+            <ul class="list-disc list-inside mb-6 text-center mx-auto max-w-md">
+                <li><strong>Mallige Hospital:</strong> 10 AM to 5 PM</li>
+                <li><strong>Raghavendra People Tree Hospital:</strong> 7:30 PM to 9 PM</li>
+            </ul>
+            <form class="max-w-lg mx-auto bg-gray-100 p-6 rounded shadow-lg">
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 font-bold">Name</label>
                     <input type="text" id="name" name="name"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required>
+                        class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div>
-                    <label for="email" class="block text-gray-700">Email</label>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 font-bold">Email</label>
                     <input type="email" id="email" name="email"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required>
+                        class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <div>
-                    <label for="message" class="block text-gray-700">Message</label>
-                    <textarea id="message" name="message" rows="4"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required></textarea>
+                <div class="mb-4">
+                    <label for="phone" class="block text-gray-700 font-bold">Phone</label>
+                    <input type="text" id="phone" name="phone"
+                        class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <button type="submit"
-                    class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">Send
-                    Message</button>
+                <div class="mb-4">
+                    <label for="date" class="block text-gray-700 font-bold">Preferred Date</label>
+                    <input type="date" id="date" name="date"
+                        class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="message" class="block text-gray-700 font-bold">Message</label>
+                    <textarea id="message" name="message"
+                        class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+                <button
+                    class="w-full bg-blue-500 text-white font-bold py-2 rounded hover:bg-blue-600 transition duration-300">
+                    Book Now
+                </button>
             </form>
+        </section>
+
+
+        <section id="contact" class="mx-4 sm:mx-20 bg-white rounded mb-16 text-gray-800 mb-8 px-4 py-10">
+            <h2 class="text-3xl font-bold mb-10 text-center">Contact</h2>
+            <p class="text-center text-sm">Feel free to reach out to me for any consultations or inquiries.</p>
+            <p class="text-center text-sm mt-4">Email: <strong>dheeresh@example.com</strong></p>
+            <p class="text-center">For OPD appointments, call: <strong>80671 65500</strong></p>
+            <p class="text-center">For direct consultation, call: <strong>99005 11146</strong></p>
         </section>
     </div>
 
     <script>
-        document.getElementById('nav-toggle').addEventListener('click', function () {
-            const menu = document.getElementById('nav-menu');
-            const profileImage = document.getElementById('profile-image');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                profileImage.classList.add('hidden');
+        document.getElementById('hamburger').addEventListener('click', function () {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.getElementById('hamburger');
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
             } else {
-                menu.classList.add('hidden');
-                profileImage.classList.remove('hidden');
+                navbar.classList.remove('scrolled');
             }
         });
     </script>
