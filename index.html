@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            /* Adjust transparency as needed */
+            z-index: -1;
+        }
+
         body {
             background-image: url(./img/background.jpg);
             /* Replace with actual image URL */
@@ -18,22 +30,29 @@
 
         /* Add a semi-transparent background to sections for better readability */
         section {
-            background-color: rgba(255, 255, 255, 0.9);
-            /* White with 90% opacity */
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.8) 100%);
             padding: 20px;
-            /* Optional: Add padding to create spacing inside the section */
             border-radius: 10px;
-            /* Optional: Add rounded corners for a softer look */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            /* Optional: Add a subtle shadow for a better visual effect */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
         }
+
+        #testimonials p {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #555;
+        }
+
 
 
         /* Hide profile image on mobile view when the menu is open */
         @media (max-width: 768px) {
-            #profile-image.hidden {
-                display: none;
+            #profile-image img {
+                width: 100%;
+                /* Ensure image scales appropriately */
+                max-width: 150px;
+                height: auto;
             }
+
         }
 
         /* Style for the fixed navbar */
@@ -53,9 +72,12 @@
 
         /* Style for the navbar after scrolling */
         .navbar.scrolled {
-            background-color: rgba(255, 255, 255, 0.8);
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 1);
+            /* Fully opaque background */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Enhance the shadow effect */
         }
+
 
         /* Style for the logo in the navbar */
         .navbar .logo {
@@ -83,7 +105,7 @@
             color: #000000;
             text-decoration: none;
             padding: 1rem 2rem;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .navbar .nav-links a:hover {
@@ -136,6 +158,28 @@
             .navbar .hamburger {
                 display: flex;
             }
+        }
+
+        /* Custom styling for service images */
+        .service-card {
+            background-color: #f7fafc;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 1rem;
         }
     </style>
 </head>
@@ -193,48 +237,62 @@
 
 
 
-        <section id="services" class="mx-4 sm:mx-20 rounded mb-16 bg-white text-gray-800 mb-8 px-4 py-10">
+        <section id="services" class="mx-4 sm:mx-20 rounded mb-16 text-gray-800 px-4 py-10">
             <h2 class="text-3xl font-bold mb-10 text-center">Services</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
-                    <h3 class="font-bold text-xl">Chronic Conditions</h3>
-                    <p class="text-sm mt-2">Expertise in managing chronic diseases like diabetes, hypertension, heart,
-                        kidney, and liver diseases, ensuring ongoing care and management.</p>
+                <!-- Service 1 -->
+                <div class="service-card shadow rounded hover:shadow-lg">
+                    <img src="img/Chronic condition.jpeg" alt="Chronic Conditions" class="service-image">
+                    <div class="service-content">
+                        <h3 class="font-bold text-xl">Chronic Conditions</h3>
+                        <p class="text-sm mt-2">Expertise in managing chronic diseases like diabetes, hypertension,
+                            heart, kidney, and liver diseases, ensuring ongoing care and management.</p>
+                    </div>
                 </div>
-                <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
-                    <h3 class="font-bold text-xl">Infectious Diseases</h3>
-                    <p class="text-sm mt-2">Skilled in diagnosing and treating infections such as flu, pneumonia,
-                        tuberculosis, HIV/AIDS, and more.</p>
+                <!-- Service 2 -->
+                <div class="service-card shadow rounded hover:shadow-lg">
+                    <img src="img/Infectious disease.jpeg" alt="Infectious Diseases" class="service-image">
+                    <div class="service-content">
+                        <h3 class="font-bold text-xl">Infectious Diseases</h3>
+                        <p class="text-sm mt-2">Skilled in diagnosing and treating infections such as flu, pneumonia,
+                            tuberculosis, HIV/AIDS, and more.</p>
+                    </div>
                 </div>
-                <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
-                    <h3 class="font-bold text-xl">Digestive System Disorders</h3>
-                    <p class="text-sm mt-2">Specializing in conditions affecting the digestive system, including ulcers,
-                        GERD, and liver disorders.</p>
+                <!-- Service 3 -->
+                <div class="service-card shadow rounded hover:shadow-lg">
+                    <img src="img/digestive_system.jpg" alt="Digestive System Disorders" class="service-image">
+                    <div class="service-content">
+                        <h3 class="font-bold text-xl">Digestive System Disorders</h3>
+                        <p class="text-sm mt-2">Specializing in conditions affecting the digestive system, including
+                            ulcers, GERD, and liver disorders.</p>
+                    </div>
                 </div>
-                <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
-                    <h3 class="font-bold text-xl">Respiratory System</h3>
-                    <p class="text-sm mt-2">Proficient in treating respiratory conditions like asthma, COPD, and lung
-                        cancer.</p>
+                <!-- Service 4 -->
+                <div class="service-card shadow rounded hover:shadow-lg">
+                    <img src="img/respiratory_system.jpg" alt="Respiratory System" class="service-image">
+                    <div class="service-content">
+                        <h3 class="font-bold text-xl">Respiratory System</h3>
+                        <p class="text-sm mt-2">Proficient in treating respiratory conditions like asthma, COPD, and lung
+                            cancer.</p>
+                    </div>
                 </div>
-                <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
-                    <h3 class="font-bold text-xl">Endocrine System Disorders</h3>
-                    <p class="text-sm mt-2">Experienced in managing hormonal disorders, including diabetes, thyroid
-                        issues, and adrenal gland disorders.</p>
+                <!-- Service 5 -->
+                <div class="service-card shadow rounded hover:shadow-lg">
+                    <img src="img/Endocrine disorders.jpeg" alt="Endocrine System Disorders" class="service-image">
+                    <div class="service-content">
+                        <h3 class="font-bold text-xl">Endocrine System Disorders</h3>
+                        <p class="text-sm mt-2">Experienced in managing hormonal disorders, including diabetes, thyroid
+                            issues, and adrenal gland disorders.</p>
+                    </div>
                 </div>
-                <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
-                    <h3 class="font-bold text-xl">Neurological Disorders</h3>
-                    <p class="text-sm mt-2">Competent in diagnosing and treating nervous system disorders like stroke,
-                        Alzheimer's, and epilepsy.</p>
-                </div>
-                <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
-                    <h3 class="font-bold text-xl">Mental Health Disorders</h3>
-                    <p class="text-sm mt-2">Trained to diagnose and treat mental health conditions such as depression,
-                        anxiety, and bipolar disorder.</p>
-                </div>
-                <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
-                    <h3 class="font-bold text-xl">Preventive Care</h3>
-                    <p class="text-sm mt-2">Focus on disease prevention through vaccinations, screenings, and lifestyle
-                        counseling.</p>
+                <!-- Service 6 -->
+                <div class="service-card shadow rounded hover:shadow-lg">
+                    <img src="img/Neurological disorders.jpeg" alt="Neurological Disorders" class="service-image">
+                    <div class="service-content">
+                        <h3 class="font-bold text-xl">Neurological Disorders</h3>
+                        <p class="text-sm mt-2">Competent in diagnosing and treating nervous system disorders like
+                            stroke, Alzheimer's, and epilepsy.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -245,8 +303,10 @@
                 <li>Published numerous case studies and research articles in national and international medical
                     journals.</li>
                 <li>Presented findings at multiple medical conferences worldwide.</li>
-                <li>He has treated many rare diseases, thousands of epidemic cases of Dengue, Malaria, Chikungunya, H1N1 flu, COVID 19 etc on a daily basis.</li>
-                <li>He is presently involved in training Post MBBS DNB post graduates in the capacity of Consultant at Mallige Hospital. He has guided them on their path to be successful in their careers</li>
+                <li>He has treated many rare diseases, thousands of epidemic cases of Dengue, Malaria, Chikungunya, H1N1
+                    flu, COVID 19 etc on a daily basis.</li>
+                <li>He is presently involved in training Post MBBS DNB post graduates in the capacity of Consultant at
+                    Mallige Hospital. He has guided them on their path to be successful in their careers</li>
                 <li>Actively involved in medical camps and community health programs, providing free healthcare to
                     underserved populations.</li>
             </ul>
@@ -281,7 +341,7 @@
             </p>
             <ul class="list-disc list-inside mb-6 text-center mx-auto max-w-md">
                 <li><strong>Mallige Hospital:</strong> 10 AM to 5 PM</li>
-                <li><strong>Raghavendra People Tree Hospital:</strong> 7:30 PM to 9 PM</li>
+                <li><strong>People Tree Hospital:</strong> 7:30 PM to 9 PM</li>
             </ul>
             <form id="appointment-form" class="max-w-lg mx-auto bg-gray-100 p-6 rounded shadow-lg"
                 action="https://formspree.io/f/xblrbwdj" method="POST">
@@ -320,6 +380,7 @@
                     Book Now
                 </button>
             </form>
+
         </section>
 
 
@@ -406,6 +467,7 @@
                     alert('Oops! Something went wrong. Please try again.');
                 });
         });
+
     </script>
 </body>
 
