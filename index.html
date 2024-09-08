@@ -2,10 +2,33 @@
 <html lang="en">
 
 <head>
-    <title>Doctor's Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Dr.Dheeresh | Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        body {
+            background-image: url(./img/background.jpg);
+            /* Replace with actual image URL */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            z-index: -1;
+        }
+
+        /* Add a semi-transparent background to sections for better readability */
+        section {
+            background-color: rgba(255, 255, 255, 0.9);
+            /* White with 90% opacity */
+            padding: 20px;
+            /* Optional: Add padding to create spacing inside the section */
+            border-radius: 10px;
+            /* Optional: Add rounded corners for a softer look */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Optional: Add a subtle shadow for a better visual effect */
+        }
+
+
         /* Hide profile image on mobile view when the menu is open */
         @media (max-width: 768px) {
             #profile-image.hidden {
@@ -117,7 +140,7 @@
     </style>
 </head>
 
-<body class="bg-gradient-to-b from-blue-100 to-blue-400 text-gray-800">
+<body class=" text-gray-800">
     <nav class="navbar bg-transparent fixed w-full top-0 left-0 z-50 transition duration-300">
         <div class="container mx-auto flex items-center justify-between px-5 md:px-20">
             <a href="#" class="logo">Dr. Dheeresh KH</a>
@@ -167,6 +190,7 @@
                 </a>
             </button>
         </section>
+
 
 
         <section id="services" class="mx-4 sm:mx-20 rounded mb-16 bg-white text-gray-800 mb-8 px-4 py-10">
@@ -297,13 +321,41 @@
         <section id="contact" class="mx-4 sm:mx-20 bg-white rounded mb-16 text-gray-800 mb-8 px-4 py-10">
             <h2 class="text-3xl font-bold mb-10 text-center">Contact</h2>
             <p class="text-center text-sm">Feel free to reach out to me for any consultations or inquiries.</p>
-            <p class="text-center text-sm mt-4">Email: <strong>dheeresh@example.com</strong></p>
-            <p class="text-center">For OPD appointments, call: <strong>80671 65500</strong></p>
-            <p class="text-center">For direct consultation, call: <strong>99005 11146</strong></p>
+            <p class="text-center text-sm mt-4">Email: <strong>dheeresh.kh6@gmail.com</strong></p>
+
+            <!-- Grid for hospital details -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8">
+                <!-- Left section (Mallige Hospital) -->
+                <div class="text-left">
+                    <p class="text-lg text-gray-700">
+                        <span class="font-bold text-gray-900">Mallige Hospital</span>
+                        <span class="block italic text-gray-600">For OPD appointments</span>
+                        <strong class="font-bold text-gray-900">80671 65500</strong>
+                    </p>
+                </div>
+
+                <!-- Right section (People Tree Hospital) -->
+                <div class="text-right">
+                    <p class="text-lg text-gray-700">
+                        <span class="font-bold text-gray-900">People Tree Hospital</span>
+                        <span class="block italic text-gray-600">For direct consultation</span>
+                        <strong class="font-bold text-gray-900">99005 11146</strong>
+                    </p>
+                </div>
+            </div>
         </section>
+
     </div>
 
     <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
         document.getElementById('hamburger').addEventListener('click', function () {
             const navLinks = document.querySelector('.nav-links');
             const hamburger = document.getElementById('hamburger');
