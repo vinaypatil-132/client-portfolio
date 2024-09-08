@@ -283,33 +283,39 @@
                 <li><strong>Mallige Hospital:</strong> 10 AM to 5 PM</li>
                 <li><strong>Raghavendra People Tree Hospital:</strong> 7:30 PM to 9 PM</li>
             </ul>
-            <form class="max-w-lg mx-auto bg-gray-100 p-6 rounded shadow-lg">
+            <form id="appointment-form" class="max-w-lg mx-auto bg-gray-100 p-6 rounded shadow-lg"
+                action="https://formspree.io/f/xblrbwdj" method="POST">
                 <div class="mb-4">
                     <label for="name" class="block text-gray-700 font-bold">Name</label>
                     <input type="text" id="name" name="name"
-                        class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
                 </div>
                 <div class="mb-4">
                     <label for="email" class="block text-gray-700 font-bold">Email</label>
                     <input type="email" id="email" name="email"
-                        class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
                 </div>
                 <div class="mb-4">
                     <label for="phone" class="block text-gray-700 font-bold">Phone</label>
                     <input type="text" id="phone" name="phone"
-                        class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
                 </div>
                 <div class="mb-4">
                     <label for="date" class="block text-gray-700 font-bold">Preferred Date</label>
                     <input type="date" id="date" name="date"
-                        class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
                 </div>
                 <div class="mb-4">
                     <label for="message" class="block text-gray-700 font-bold">Message</label>
                     <textarea id="message" name="message"
-                        class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required></textarea>
                 </div>
-                <button
+                <button type="submit"
                     class="w-full bg-blue-500 text-white font-bold py-2 rounded hover:bg-blue-600 transition duration-300">
                     Book Now
                 </button>
@@ -369,6 +375,36 @@
             } else {
                 navbar.classList.remove('scrolled');
             }
+        });
+
+        document.getElementById('appointment-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            var form = event.target;
+            var formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Success:', data); // For debugging
+                    alert('Thank you! Your appointment has been booked.');
+                    form.reset(); // Optionally reset the form
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Oops! Something went wrong. Please try again.');
+                });
         });
     </script>
 </body>
