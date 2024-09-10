@@ -28,6 +28,17 @@
             z-index: -1;
         }
 
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Add a semi-transparent background to sections for better readability */
         section {
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.8) 100%);
@@ -215,9 +226,9 @@
         </div>
     </div>
 
-    <div class="mb-16 container mx-auto pt-32">
+    <div class="mb-16 container mx-auto pt-32 ">
         <section id="about"
-            class="mx-4 sm:mx-20 text-center mt-20 relative my-5 mb-16 px-4 py-10 rounded-lg shadow-md relative overflow-hidden bg-white">
+            class="mx-4 sm:mx-20 text-center mt-20 relative my-5 mb-16 px-4 py-10 rounded-lg shadow-md relative overflow-hidden bg-white reveal-on-scroll">
             <h2 class="text-3xl font-bold mb-4 text-gray-800">About Dr. Dheeresh KH</h2>
             <p class="text-base text-gray-700">
                 Dr. Dheeresh KH, MBBS - MSRMC, MD Internal Medicine - RMLH New Delhi, brings over 10 years of experience
@@ -237,7 +248,7 @@
 
 
 
-        <section id="services" class="mx-4 sm:mx-20 rounded mb-16 text-gray-800 px-4 py-10">
+        <section id="services" class="mx-4 sm:mx-20 rounded mb-16 text-gray-800 px-4 py-10 reveal-on-scroll">
             <h2 class="text-3xl font-bold mb-10 text-center">Services</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Service 1 -->
@@ -272,7 +283,8 @@
                     <img src="img/Respiratory.jpeg" alt="Respiratory System" class="service-image">
                     <div class="service-content">
                         <h3 class="font-bold text-xl">Respiratory System</h3>
-                        <p class="text-sm mt-2">Proficient in treating respiratory conditions like asthma, COPD, and lung
+                        <p class="text-sm mt-2">Proficient in treating respiratory conditions like asthma, COPD, and
+                            lung
                             cancer.</p>
                     </div>
                 </div>
@@ -303,121 +315,122 @@
                     </div>
                 </div>
             </div>
-        </section>
+    </div>
+    </section>
 
-        <section id="achievements" class="mx-4 sm:mx-20 rounded mb-16 bg-white text-gray-800 mb-8 px-4 py-10">
-            <h2 class="text-3xl font-bold mb-10 text-center">Achievements</h2>
-            <ul class="list-disc pl-5">
-                <li>Published numerous case studies and research articles in national and international medical
-                    journals.</li>
-                <li>Presented findings at multiple medical conferences worldwide.</li>
-                <li>He has treated many rare diseases, thousands of epidemic cases of Dengue, Malaria, Chikungunya, H1N1
-                    flu, COVID 19 etc on a daily basis.</li>
-                <li>He is presently involved in training Post MBBS DNB post graduates in the capacity of Consultant at
-                    Mallige Hospital. He has guided them on their path to be successful in their careers</li>
-                <li>Actively involved in medical camps and community health programs, providing free healthcare to
-                    underserved populations.</li>
-            </ul>
-        </section>
+    <section id="achievements" class="mx-4 sm:mx-20 rounded mb-16 bg-white text-gray-800 mb-8 px-4 py-10 reveal-on-scroll">
+        <h2 class="text-3xl font-bold mb-10 text-center">Achievements</h2>
+        <ul class="list-disc pl-5">
+            <li>Published numerous case studies and research articles in national and international medical
+                journals.</li>
+            <li>Presented findings at multiple medical conferences worldwide.</li>
+            <li>He has treated many rare diseases, thousands of epidemic cases of Dengue, Malaria, Chikungunya, H1N1
+                flu, COVID 19 etc on a daily basis.</li>
+            <li>He is presently involved in training Post MBBS DNB post graduates in the capacity of Consultant at
+                Mallige Hospital. He has guided them on their path to be successful in their careers</li>
+            <li>Actively involved in medical camps and community health programs, providing free healthcare to
+                underserved populations.</li>
+        </ul>
+    </section>
 
-        <section id="testimonials" class="mx-4 sm:mx-20 rounded mb-16 bg-white text-gray-800 mb-8 px-4 py-10">
-            <h2 class="text-3xl font-bold mb-10 text-center">Testimonials</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
-                    <p class="text-sm">"Dr. Dheeresh is a highly skilled and compassionate doctor who truly cares about
-                        his patients. He has been instrumental in managing my chronic condition and improving my quality
-                        of life."</p>
-                    <p class="text-sm font-bold mt-4">- Deekshith KH</p>
-                </div>
-                <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
-                    <p class="text-sm">"His expertise and dedication are unmatched. I am grateful for the care and
-                        attention he has provided to my family and me over the years."</p>
-                    <p class="text-sm font-bold mt-4">- Sunil Patro</p>
-                </div>
-                <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
-                    <p class="text-sm">"Dr. Dheeresh's knowledge and experience are evident in every interaction. He
-                        takes the time to listen and explain, making sure I feel confident in my treatment plan."</p>
-                    <p class="text-sm font-bold mt-4">- Abhishek M</p>
-                </div>
+    <section id="testimonials" class="mx-4 sm:mx-20 rounded mb-16 bg-white text-gray-800 mb-8 px-4 py-10 reveal-on-scroll">
+        <h2 class="text-3xl font-bold mb-10 text-center">Testimonials</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
+                <p class="text-sm">"Dr. Dheeresh is a highly skilled and compassionate doctor who truly cares about
+                    his patients. He has been instrumental in managing my chronic condition and improving my quality
+                    of life."</p>
+                <p class="text-sm font-bold mt-4">- Deekshith KH</p>
             </div>
-        </section>
-
-        <section id="appointment" class="mx-4 sm:mx-20 bg-white rounded mb-16 text-gray-800 mb-8 px-4 py-10">
-            <h2 class="text-3xl font-bold mb-10 text-center">Book an Appointment</h2>
-            <p class="text-base text-gray-700 mb-6 text-center">
-                Dr. Dheeresh KH is available for consultations at the following times and locations:
-            </p>
-            <ul class="list-disc list-inside mb-6 text-center mx-auto max-w-md">
-                <li><strong>Mallige Hospital:</strong> 10 AM to 5 PM</li>
-                <li><strong>People Tree Hospital:</strong> 7:30 PM to 9 PM</li>
-            </ul>
-            <form id="appointment-form" class="max-w-lg mx-auto bg-gray-100 p-6 rounded shadow-lg"
-                action="https://formspree.io/f/xblrbwdj" method="POST">
-                <div class="mb-4">
-                    <label for="name" class="block text-gray-700 font-bold">Name</label>
-                    <input type="text" id="name" name="name"
-                        class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required>
-                </div>
-                <div class="mb-4">
-                    <label for="email" class="block text-gray-700 font-bold">Email</label>
-                    <input type="email" id="email" name="email"
-                        class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required>
-                </div>
-                <div class="mb-4">
-                    <label for="phone" class="block text-gray-700 font-bold">Phone</label>
-                    <input type="text" id="phone" name="phone"
-                        class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required>
-                </div>
-                <div class="mb-4">
-                    <label for="date" class="block text-gray-700 font-bold">Preferred Date</label>
-                    <input type="date" id="date" name="date"
-                        class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required>
-                </div>
-                <div class="mb-4">
-                    <label for="message" class="block text-gray-700 font-bold">Message</label>
-                    <textarea id="message" name="message"
-                        class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required></textarea>
-                </div>
-                <button type="submit"
-                    class="w-full bg-blue-500 text-white font-bold py-2 rounded hover:bg-blue-600 transition duration-300">
-                    Book Now
-                </button>
-            </form>
-
-        </section>
-
-
-        <section id="contact" class="mx-4 sm:mx-20 bg-white rounded mb-16 text-gray-800 mb-8 px-4 py-10">
-            <h2 class="text-3xl font-bold mb-10 text-center">Contact</h2>
-            <p class="text-center text-sm">Feel free to reach out to me for any consultations or inquiries.</p>
-            <p class="text-center text-sm mt-4">Email: <strong>dheeresh.kh6@gmail.com</strong></p>
-
-            <!-- Grid for hospital details -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8">
-                <!-- Left section (Mallige Hospital) -->
-                <div class="text-left">
-                    <p class="text-lg text-gray-700">
-                        <span class="font-bold text-gray-900">Mallige Hospital</span>
-                        <span class="block italic text-gray-600">For OPD appointments</span>
-                        <strong class="font-bold text-gray-900">80671 65500</strong>
-                    </p>
-                </div>
-
-                <!-- Right section (People Tree Hospital) -->
-                <div class="text-right">
-                    <p class="text-lg text-gray-700">
-                        <span class="font-bold text-gray-900">People Tree Hospital</span>
-                        <span class="block italic text-gray-600">For direct consultation</span>
-                        <strong class="font-bold text-gray-900">99005 11146</strong>
-                    </p>
-                </div>
+            <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
+                <p class="text-sm">"His expertise and dedication are unmatched. I am grateful for the care and
+                    attention he has provided to my family and me over the years."</p>
+                <p class="text-sm font-bold mt-4">- Sunil Patro</p>
             </div>
-        </section>
+            <div class="bg-gray-100 p-6 shadow rounded hover:shadow-lg transition-shadow duration-300">
+                <p class="text-sm">"Dr. Dheeresh's knowledge and experience are evident in every interaction. He
+                    takes the time to listen and explain, making sure I feel confident in my treatment plan."</p>
+                <p class="text-sm font-bold mt-4">- Abhishek M</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="appointment" class="mx-4 sm:mx-20 bg-white rounded mb-16 text-gray-800 mb-8 px-4 py-10 reveal-on-scroll">
+        <h2 class="text-3xl font-bold mb-10 text-center">Book an Appointment</h2>
+        <p class="text-base text-gray-700 mb-6 text-center">
+            Dr. Dheeresh KH is available for consultations at the following times and locations:
+        </p>
+        <ul class="list-disc list-inside mb-6 text-center mx-auto max-w-md">
+            <li><strong>Mallige Hospital:</strong> 10 AM to 5 PM</li>
+            <li><strong>People Tree Hospital:</strong> 7:30 PM to 9 PM</li>
+        </ul>
+        <form id="appointment-form" class="max-w-lg mx-auto bg-gray-100 p-6 rounded shadow-lg"
+            action="https://formspree.io/f/xblrbwdj" method="POST">
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700 font-bold">Name</label>
+                <input type="text" id="name" name="name"
+                    class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 font-bold">Email</label>
+                <input type="email" id="email" name="email"
+                    class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="phone" class="block text-gray-700 font-bold">Phone</label>
+                <input type="text" id="phone" name="phone"
+                    class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="date" class="block text-gray-700 font-bold">Preferred Date</label>
+                <input type="date" id="date" name="date"
+                    class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="message" class="block text-gray-700 font-bold">Message</label>
+                <textarea id="message" name="message"
+                    class="w-full mt-2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required></textarea>
+            </div>
+            <button type="submit"
+                class="w-full bg-blue-500 text-white font-bold py-2 rounded hover:bg-blue-600 transition duration-300">
+                Book Now
+            </button>
+        </form>
+
+    </section>
+
+
+    <section id="contact" class="mx-4 sm:mx-20 bg-white rounded mb-16 text-gray-800 mb-8 px-4 py-10 reveal-on-scroll">
+        <h2 class="text-3xl font-bold mb-10 text-center">Contact</h2>
+        <p class="text-center text-sm">Feel free to reach out to me for any consultations or inquiries.</p>
+        <p class="text-center text-sm mt-4">Email: <strong>dheeresh.kh6@gmail.com</strong></p>
+
+        <!-- Grid for hospital details -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8">
+            <!-- Left section (Mallige Hospital) -->
+            <div class="text-left">
+                <p class="text-lg text-gray-700">
+                    <span class="font-bold text-gray-900">Mallige Hospital</span>
+                    <span class="block italic text-gray-600">For OPD appointments</span>
+                    <strong class="font-bold text-gray-900">80671 65500</strong>
+                </p>
+            </div>
+
+            <!-- Right section (People Tree Hospital) -->
+            <div class="text-right">
+                <p class="text-lg text-gray-700">
+                    <span class="font-bold text-gray-900">People Tree Hospital</span>
+                    <span class="block italic text-gray-600">For direct consultation</span>
+                    <strong class="font-bold text-gray-900">99005 11146</strong>
+                </p>
+            </div>
+        </div>
+    </section>
 
     </div>
 
@@ -474,6 +487,29 @@
                     console.error('Error:', error);
                     alert('Oops! Something went wrong. Please try again.');
                 });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('.reveal-on-scroll');
+
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Stop observing once visible
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
         });
 
     </script>
